@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj" 
+TO ".\Objects\Dot_Matrix_LCD" 
+PRINT(".\Listings\Dot_Matrix_LCD.m51") RAMSIZE(256) 
