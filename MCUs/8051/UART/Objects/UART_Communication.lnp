@@ -1,0 +1,5 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\SERIAL.obj" 
+TO ".\Objects\UART_Communication" 
+PRINT(".\Listings\UART_Communication.m51")

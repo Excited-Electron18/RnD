@@ -1,4 +1,3 @@
-#include<reg51.h>
 #include "./Header/Dot_Matrix_LCD_4bit_Mode.h"
 
 int main()

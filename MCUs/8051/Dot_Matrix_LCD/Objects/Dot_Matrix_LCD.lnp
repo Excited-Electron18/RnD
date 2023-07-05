@@ -1,4 +1,5 @@
 ".\Objects\STARTUP.obj",
-".\Objects\main.obj" 
+".\Objects\main.obj",
+".\Objects\Dot_Matrix_LCD_4bit_Mode.obj" 
 TO ".\Objects\Dot_Matrix_LCD" 
 PRINT(".\Listings\Dot_Matrix_LCD.m51") RAMSIZE(256) 
