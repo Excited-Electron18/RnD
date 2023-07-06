@@ -1,5 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\main.obj",
-".\Objects\I2C.obj" 
-TO ".\Objects\I2C_Communication" 
-PRINT(".\Listings\I2C_Communication.m51")

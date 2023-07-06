@@ -1,5 +1,0 @@
-".\Objects\STARTUP.obj",
-".\Objects\main.obj",
-".\Objects\Ext_Interrupt.obj" 
-TO ".\Objects\External_Interrupt" 
-PRINT(".\Listings\External_Interrupt.m51")

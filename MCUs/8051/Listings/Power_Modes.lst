@@ -1,0 +1,35 @@
+C51 COMPILER V9.60.7.0   POWER_MODES                                                       07/06/2023 17:37:52 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE POWER_MODES
+OBJECT MODULE PLACED IN .\Objects\Power_Modes.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Sample_Test\Power_Modes.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PR
+                    -INT(.\Listings\Power_Modes.lst) TABS(2) OBJECT(.\Objects\Power_Modes.obj)
+
+line level    source
+
+   1          #include "./Library/Global.h"
+   2          #if POWER_MODE_TEST == 1
+              
+              #include "./Library/Power_Mode.h"
+              
+              void POWER_Mode_Test(void)
+              {
+              
+              }
+              
+              #endif 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

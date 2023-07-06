@@ -1,0 +1,18 @@
+".\Objects\STARTUP.obj",
+".\Objects\main.obj",
+".\Objects\Dot_Matrix_LCD_4bit_Mode.obj",
+".\Objects\Ext_Interrupt.obj",
+".\Objects\I2C.obj",
+".\Objects\UART.obj",
+".\Objects\Timer.obj",
+".\Objects\Power_Mode.obj",
+".\Objects\SPI.obj",
+".\Objects\Dot_Matrix_LCD.obj",
+".\Objects\External_Interrupt.obj",
+".\Objects\I2C_Interface.obj",
+".\Objects\UART_Interface.obj",
+".\Objects\Power_Modes.obj",
+".\Objects\Timer_Test.obj",
+".\Objects\SPI_Interface.obj" 
+TO ".\Objects\8051_Sample_Test" 
+PRINT(".\Listings\8051_Sample_Test.m51")

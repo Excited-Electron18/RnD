@@ -1,0 +1,92 @@
+C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/06/2023 17:37:50 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE DOT_MATRIX_LCD_4BIT_MODE
+OBJECT MODULE PLACED IN .\Objects\Dot_Matrix_LCD_4bit_Mode.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Library\Dot_Matrix_LCD_4bit_Mode.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECT
+                    -EXTEND PRINT(.\Listings\Dot_Matrix_LCD_4bit_Mode.lst) TABS(2) OBJECT(.\Objects\Dot_Matrix_LCD_4bit_Mode.obj)
+
+line level    source
+
+   1          #include "Dot_Matrix_LCD_4bit_Mode.h"
+   2          
+   3          #if DOT_MATRIX_LCD_TEST == 1
+              
+              // --------------------------------------------------------------- Function definition
+              void LCD_Init(void)
+              {
+                LCD_Port=0x00;
+                LCD_Write(WR_CMD,SET_4BIT_MODE);
+                LCD_Write(WR_CMD,EN_5x7_MODE);
+                LCD_Write(WR_CMD,DISP_ON_CUR_OFF);
+                LCD_Write(WR_CMD,INC_CURSOR);
+                LCD_Write(WR_CMD,CURS_LINE_1);
+              }
+               
+              void LCD_Write(unsigned char Wr_Type, unsigned char Wr_Val)
+              {
+                char Temp_Val;
+                LCD_Busy_Check();
+                LCD_Port &= 0x0F;
+                LCD_RS = Wr_Type;
+                LCD_RW=0;
+                Temp_Val=(Wr_Val & 0xF0);
+                LCD_Port |= Temp_Val;   //mask lower nibble because PA4-PA7 pins are used
+                LCD_EN = 1;
+                LCD_Delay(5);
+                LCD_EN = 0;
+               
+                LCD_Port &= 0x0F;
+                Temp_Val =((Wr_Val<<4) & 0xF0);
+                LCD_Port |= Temp_Val;  //shift 4-bit and mask
+                LCD_EN = 1;
+                LCD_Delay(5);
+                LCD_EN = 0;
+              }
+              
+              void LCD_Delay(unsigned int count)
+              {
+                unsigned int i,j;
+                for(i=0;i<count;i++)
+                {
+                  for(j=0;j<1200;j++);
+                }
+              }
+              
+              void LCD_Write_String(unsigned char *str)
+              {
+                while(*str!='\0')
+                {
+                  LCD_Write(WR_DATA,*str);
+                  str++; 
+                }
+              }
+              
+C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/06/2023 17:37:50 PAGE 2   
+
+              void LCD_Busy_Check(void)
+              {
+                LCD_D7=1;
+                LCD_RS=0;
+                LCD_RW=1;
+                while(LCD_D7!=0)
+                {
+                  LCD_EN=0;
+                  LCD_EN=1;
+                }
+              }
+              #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

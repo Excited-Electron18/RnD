@@ -1,0 +1,35 @@
+C51 COMPILER V9.60.7.0   TIMER_TEST                                                        07/06/2023 17:37:52 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE TIMER_TEST
+OBJECT MODULE PLACED IN .\Objects\Timer_Test.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Sample_Test\Timer_Test.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRI
+                    -NT(.\Listings\Timer_Test.lst) TABS(2) OBJECT(.\Objects\Timer_Test.obj)
+
+line level    source
+
+   1          #include "./Library/Global.h"
+   2          #if TIMER_TEST == 1
+              
+              #include "./Library/Timer.h"
+              
+              void TIMER_Test(void)
+              {
+              
+              }
+              
+              #endif 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

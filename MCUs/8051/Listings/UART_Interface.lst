@@ -1,0 +1,63 @@
+C51 COMPILER V9.60.7.0   UART_INTERFACE                                                    07/06/2023 17:37:52 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE UART_INTERFACE
+OBJECT MODULE PLACED IN .\Objects\UART_Interface.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Sample_Test\UART_Interface.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                    - PRINT(.\Listings\UART_Interface.lst) TABS(2) OBJECT(.\Objects\UART_Interface.obj)
+
+line level    source
+
+   1          #include "./Library/Global.h"
+   2          #include "./Library/UART.h"
+   3          
+   4          #if UART_TEST == 1
+              extern char Rx_Buf[MAX_BUF_SIZE];
+              
+              void UART_Test(void)
+              {
+                char Rx_Val;
+                UART_Init();
+                UART_Transmit_String("Hello World");
+                while(1)
+                {
+                  UART_Transmit_String("\r\n");
+                  UART_Transmit_String("1. Char Test\r\n");
+                  UART_Transmit_String("2. String Test\r\n");
+                  UART_Transmit_String("Enter Your Choice..\r\n");
+                  Rx_Val = UART_Receive_Byte();
+                  switch(Rx_Val)
+                  {
+                    case '1':
+                      UART_Transmit_String("Enter Char..\r\n");
+                      Rx_Val = UART_Receive_Byte();
+                      UART_Transmit_String("Entered Char : ");
+                      UART_Transmit_Byte(Rx_Val);
+                    break;  
+                    case '2':
+                      UART_Transmit_String("Enter String (Max 32 Byte)\r\n");
+                      UART_Receive_String();
+                      UART_Transmit_String("Entered String : ");
+                      UART_Transmit_String(Rx_Buf);
+                    break;
+                    default:
+                      UART_Transmit_String("Invalid Choice\r\n");
+                    break;      
+                  }
+                }
+              }
+              #endif
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
