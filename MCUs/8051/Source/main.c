@@ -13,7 +13,7 @@ int main()
 	#elif POWER_MODE_TEST == 1
 		POWER_Mode_Test();
 	#elif TIMER_TEST == 1
-		TIMER_Test();
+		TIMER_Test(0);
 	#elif SPI_INTERFACE_TEST == 1
 		SPI_Interface_Test();
 	#endif

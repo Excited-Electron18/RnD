@@ -1,19 +1,25 @@
 #include "./Library/I2C.h"
 
+
+#if I2C_INTERFACE_TEST == 1 && I2C_TEMP_SENSOR_TEST == 1
+
+#elif I2C_INTERFACE_TEST == 1 && I2C_FLASH_MEMORY_TEST == 1
+char WR_Data[4]="ABCD";
+char RD_Data[4];
+int i=0;
+void ReadBYTE(unsigned int Addr);
+void WriteBYTE(unsigned int Addr);
+
+sbit LED=P1^0;
+#endif
+
 #if I2C_INTERFACE_TEST == 1
 
-char Temp_Val[2];
-int Final_Val;
-void Setup_Temp_Sensor(void);
-void Read_Temp(void);
-void send(char command_code);
-void send_write(unsigned char command_code, unsigned char value);
-void receive(char command_code);
-void Convert_Temp(void);
 
 void I2C_Interface_Test(void)
 {
 	I2C_Init();
+	#if I2C_TEMP_SENSOR_TEST == 1
 	Setup_Temp_Sensor();
 	while(1)
 	{
@@ -21,7 +27,37 @@ void I2C_Interface_Test(void)
 		Convert_Temp();
 		I2C_Delay(1000);
 	}
+	#elif I2C_FLASH_MEMORY_TEST == 1
+
+	  WriteBYTE(0x0000);
+    I2C_Write(WR_Data[0]);        //Write Data's Here
+    I2C_Write(WR_Data[1]);
+    I2C_Write(WR_Data[2]);
+    I2C_Write(WR_Data[3]);   
+    I2C_Stop(); 
+    I2C_Delay(10);
+    ReadBYTE(0x0000);
+    RD_Data[0] = I2C_Read();   
+    RD_Data[1] = I2C_Read();   
+    RD_Data[2] = I2C_Read();   
+    RD_Data[3] = I2C_Read();   
+		for(i=0;i<4;i++)
+		{
+			if(WR_Data[i]==RD_Data[i])
+			{
+				LED = 0;
+			}
+			else
+			{
+				LED = 1;
+			}
+		}
+	#endif
 }
+
+#if I2C_TEMP_SENSOR_TEST == 1
+char Temp_Val[2];
+int Final_Val;
 
 //==================================================
 void Setup_Temp_Sensor(void)
@@ -99,4 +135,26 @@ void Convert_Temp(void)
 	Final_Val=arr_disp[1]*10+arr_disp[2];
 }
 
+#elif I2C_FLASH_MEMORY_TEST == 1
+
+// Read 1 byte form I2C
+void ReadBYTE(unsigned int Addr)
+{
+    I2C_Start();
+    I2C_Write(0xA0);
+    I2C_Write((unsigned char)(Addr>>8)&0xFF);
+    I2C_Write((unsigned char)Addr&0xFF);
+}
+
+// Write 1 byte to I2C
+void WriteBYTE(unsigned int Addr)
+{
+    I2C_Start();
+    I2C_Write(0xA0);
+    I2C_Write((unsigned char)(Addr>>8)&0xFF);    // send address high
+    I2C_Write((unsigned char)Addr&0xFF);             // send address low
+}
+
+
+#endif
 #endif

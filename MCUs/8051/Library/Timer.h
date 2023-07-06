@@ -11,7 +11,8 @@
 // ------------------------------------------------------------- Function declaration
 
 void TIMER_Init(void);
-
+void TIMER0_Delay(void);
+void TIMER1_Delay(void);
 
 #endif
 #endif

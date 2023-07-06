@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 17:37:50 PAGE 1   
+C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 21:16:50 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE I2C
@@ -62,7 +62,7 @@ line level    source
                   SCL = 0;
                   I2C_Delay(3);
               }
-C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 17:37:50 PAGE 2   
+C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 21:16:50 PAGE 2   
 
               
               void I2C_Write(unsigned char Data)
@@ -126,7 +126,7 @@ line level    source
               
               //// Write multiple byte to I2C
               //void I2C_Write_Bytes(unsigned int SlaveID,char *Bytes,unsigned int NumBytes)
-C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 17:37:50 PAGE 3   
+C51 COMPILER V9.60.7.0   I2C                                                               07/06/2023 21:16:50 PAGE 3   
 
               //{
               //    I2C_Start();
