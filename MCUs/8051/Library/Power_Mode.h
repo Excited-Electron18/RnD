@@ -11,7 +11,10 @@
 // ------------------------------------------------------------- Function declaration
 
 void Power_Mode_Init(void);
-
+void Ext_0_ISR(void);
+void Power_Mode_Delay(void);
+void Power_Mode_Idle(void);
+void Power_Mode_Down(void);
 
 #endif
 #endif

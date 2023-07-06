@@ -7,8 +7,8 @@
 
 #if EXT_INTERRUPT_TEST == 1
 	void Ext_Interrupt_Init();
-	void Ext_Interrupt_1(void);
-	void Ext_Interrupt_2(void);
+	void Ext_0_ISR(void);
+	void Ext_1_ISR(void);
 #endif
 
 
