@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/06/2023 22:01:56 PAGE 1   
+C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/07/2023 15:23:00 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE DOT_MATRIX_LCD_4BIT_MODE
@@ -62,7 +62,7 @@ line level    source
                 }
               }
               
-C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/06/2023 22:01:56 PAGE 2   
+C51 COMPILER V9.60.7.0   DOT_MATRIX_LCD_4BIT_MODE                                          07/07/2023 15:23:00 PAGE 2   
 
               void LCD_Busy_Check(void)
               {
@@ -75,6 +75,15 @@ line level    source
                   LCD_EN=1;
                 }
               }
+              
+              void LCD_Cursor_Position(unsigned char Line,unsigned char Loc)
+              {
+                if (Line==1)
+                  lcd_cmd((0x80)|Loc);
+                if (Line==2)
+                  lcd_cmd((0xC0)|Loc);
+              }
+              
               #endif
 
 

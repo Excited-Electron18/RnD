@@ -3,7 +3,7 @@
 
 //======================= Features
 #define EXT_INTERRUPT_TEST 0
-#define UART_TEST 0
+#define UART_TEST 1
 #define TIMER_TEST 0 			
 #define POWER_MODE_TEST 0 
 

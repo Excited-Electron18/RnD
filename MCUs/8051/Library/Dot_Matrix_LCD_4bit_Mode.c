@@ -63,4 +63,13 @@ void LCD_Busy_Check(void)
 		LCD_EN=1;
 	}
 }
+
+void LCD_Cursor_Position(unsigned char Line,unsigned char Loc)
+{
+	if (Line==1)
+		lcd_cmd((0x80)|Loc);
+	if (Line==2)
+		lcd_cmd((0xC0)|Loc);
+}
+
 #endif

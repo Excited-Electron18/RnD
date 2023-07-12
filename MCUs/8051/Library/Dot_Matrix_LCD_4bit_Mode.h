@@ -43,6 +43,7 @@ void LCD_Delay(unsigned int count);
 void LCD_Write(unsigned char Wr_Type, unsigned char Wr_Val);
 void LCD_Write_String(unsigned char *str);		
 void LCD_Busy_Check(void);
+void LCD_Cursor_Position(unsigned char Line,unsigned char Loc);
 
 #endif
 

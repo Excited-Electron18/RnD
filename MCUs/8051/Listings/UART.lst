@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.7.0   UART                                                              07/06/2023 22:01:56 PAGE 1   
+C51 COMPILER V9.60.7.0   UART                                                              07/07/2023 15:49:46 PAGE 1   
 
 
 C51 COMPILER V9.60.7.0, COMPILATION OF MODULE UART
@@ -11,78 +11,87 @@ line level    source
    1          #include "UART.h"
    2          
    3          #if UART_TEST == 1
-              // --------------------------------------------------------------- Global variables
-              char Rx_Buf[MAX_BUF_SIZE];
-              unsigned int Rx_Len=0;
-              
-              // --------------------------------------------------------------- Function definition
-              void UART_Init(void)
-              {
-                TMOD=0x20; // settings for 9600 Baudrate with 11.0592 MHz Crystal Oscillator 
-                SCON=0x50;
-                TL1=0xFD;
-                TH1=0xFD;
-                TR1=1;
-              }
-              
-              void UART_Transmit_Byte(char ch)
-              {
-                SBUF=ch;
-                while(!TI);
-                TI=0;
-              }
-              
-              void UART_Transmit_String(char *str)
-              {
-                while(*str!='\0')
-                {
-                  UART_Transmit_Byte(*str);
-                  str++; 
-                }
-              } 
-              
-              char UART_Receive_Byte(void)
-              {
-                unsigned char ch;
-                while(RI!=1);
-                ch=SBUF;
-                RI=0;
-                return ch;
-              }
-              
-              void UART_Receive_String(void)
-              {
-                char ch;
-                Rx_Len=0;
-                while(1)
-                  {   
-                    ch=UART_Receive_Byte();
-                    if((ch!='\r') && (ch!='\n'))
-                      {
-                        Rx_Buf[Rx_Len]=ch;
-                      }
-                    else
-C51 COMPILER V9.60.7.0   UART                                                              07/06/2023 22:01:56 PAGE 2   
+   4          // --------------------------------------------------------------- Global variables
+   5          char Rx_Buf[MAX_BUF_SIZE];
+   6          unsigned int Rx_Len=0;
+   7          
+   8          // --------------------------------------------------------------- Function definition
+   9          void UART_Init(void)
+  10          {
+  11   1        TMOD=0x20; // settings for 9600 Baudrate with 11.0592 MHz Crystal Oscillator 
+  12   1        SCON=0x50;
+  13   1        TL1=0xFD;
+  14   1        TH1=0xFD;
+  15   1        TR1=1;
+  16   1      }
+  17          
+  18          void UART_Transmit_Byte(char ch)
+  19          {
+  20   1        SBUF=ch;
+  21   1        while(!TI);
+  22   1        TI=0;
+  23   1      }
+  24          
+  25          void UART_Transmit_String(char *str)
+  26          {
+  27   1        while(*str!='\0')
+  28   1        {
+  29   2          UART_Transmit_Byte(*str);
+  30   2          str++; 
+  31   2        }
+  32   1      } 
+  33          
+  34          char UART_Receive_Byte(void)
+  35          {
+  36   1        unsigned char ch;
+  37   1        while(RI!=1);
+  38   1        ch=SBUF;
+  39   1        RI=0;
+  40   1        return ch;
+  41   1      }
+  42          
+  43          void UART_Receive_String(void)
+  44          {
+  45   1        char ch;
+  46   1        Rx_Len=0;
+  47   1        while(1)
+  48   1          {   
+  49   2            ch=UART_Receive_Byte();
+  50   2            if((ch!='\r') && (ch!='\n'))
+  51   2              {
+  52   3                Rx_Buf[Rx_Len]=ch;
+  53   3              }
+  54   2            else
+C51 COMPILER V9.60.7.0   UART                                                              07/07/2023 15:49:46 PAGE 2   
 
-                      {
-                        Rx_Buf[Rx_Len]='\0';
-                        break;
-                      }
-                    Rx_Len++;
-                    if(Rx_Len>=MAX_BUF_SIZE)
-                        break;
-                  }
-              }
-              
-              #endif
+  55   2              {
+  56   3                Rx_Buf[Rx_Len]='\0';
+  57   3                break;
+  58   3              }
+  59   2            Rx_Len++;
+  60   2            if(Rx_Len>=MAX_BUF_SIZE)
+  61   2                break;
+  62   2          }
+  63   1      }
+  64          
+  65          void UART_Delay(unsigned int count)
+  66          {
+  67   1        unsigned int i,j;
+  68   1        for(i=0;i<count;i++)
+  69   1        {
+  70   2          for(j=0;j<1200;j++);
+  71   2        }
+  72   1      }
+  73          
+  74          #endif
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   ----    ----
+   CODE SIZE        =    135    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+   DATA SIZE        =     34    ----
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
 END OF MODULE INFORMATION.

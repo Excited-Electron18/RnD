@@ -15,6 +15,7 @@ void UART_Transmit_Byte(char ch);
 void UART_Transmit_String(char *str);
 char UART_Receive_Byte(void);
 void UART_Receive_String(void);
+void UART_Delay(unsigned int count);
 
 #endif
 #endif
