@@ -1,0 +1,24 @@
+wifi.setmode(wifi.STATION)
+station_cfg={}
+station_cfg.ssid = "Nokia 6.1"
+station_cfg.pwd = "electron.6"
+station_cfg.save = true
+wifi.sta.config(station_cfg.ssid,station_cfg.pwd)
+-- print current IP address, netmask, gateway
+print(wifi.sta.getip())
+-- 192.168.0.111  255.255.255.0  192.168.0.1
+ip = wifi.sta.getip()
+print(ip)
+-- 192.168.0.111
+ip, nm = wifi.sta.getip()
+print(nm)
+-- 255.255.255.0
+
+
+print(wifi.sta.getip())
+--nil
+wifi.setmode(wifi.STATION)
+wifi.sta.config("Electron","electron18")
+print(wifi.sta.getip())
+--192.168.18.110v
+
